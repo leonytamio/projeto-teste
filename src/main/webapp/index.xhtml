@@ -11,21 +11,11 @@
 <h:body>
 	<h:form>
 		<p:panelGrid columns="2">
-
-			<h:outputLabel for="nomelivro" value="Nome do Livro"></h:outputLabel>
-			<p:inputText id="nomelivro" value="#{bookBean.nomelivro}"></p:inputText>
-
-			<h:outputLabel for="editora" value="Editora"></h:outputLabel>
-			<p:inputText id="editora" value="#{bookBean.editora}"></p:inputText>
-
-			<h:outputLabel for="nomeautor" value="Autor"></h:outputLabel>
-			<p:inputText id="nomeautor" value="#{bookBean.nomeautor}"></p:inputText>
-
-			<h:outputText></h:outputText>
-			<p:commandButton value="Cadastrar" action="#{bookBean.mensagemCadastro()}" update="mensagem"></p:commandButton>
-
+		<h:outputLabel for="nomeautor" value="Autor"></h:outputLabel>
+		<p:inputText id="nomeautor" value="#"></p:inputText>
+		<p:commandButton value="Cadastrar" action="#{bookBean.imprimiConsole()}"></p:commandButton>
 		</p:panelGrid>
 	</h:form>
-			<h:outputText id="mensagem" value="#{bookBean.mensagemcadastro}"></h:outputText>
+
 </h:body>
 </html>
