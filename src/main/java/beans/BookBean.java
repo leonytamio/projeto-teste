@@ -11,6 +11,8 @@ public class BookBean {
 	
 	
 	public void imprimiConsole() {
+	 System.out.println(book.getNomelivro());
+	 System.out.println(book.getEditora());
 	 System.out.println(book.getNomeautor());
 	}
 	
