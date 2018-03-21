@@ -2,15 +2,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-   <h:head>
-      <title>Welcome</title>
-   </h:head>
-   <h:body>
-   
-      Hello World!
-      
-      
-   </h:body>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Welcome</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panelGrid columns="2">
+
+			<h:outputLabel for="nomelivro" value="Nome do Livro"></h:outputLabel>
+			<p:inputText id="nomelivro" value="#{bookBean.nomelivro}"></p:inputText>
+
+			<h:outputLabel for="editora" value="Editora"></h:outputLabel>
+			<p:inputText id="editora" value="#{bookBean.editora}"></p:inputText>
+
+			<h:outputLabel for="nomeautor" value="Autor"></h:outputLabel>
+			<p:inputText id="nomeautor" value="#{bookBean.nomeautor}"></p:inputText>
+
+			<h:outputText></h:outputText>
+			<p:commandButton value="Cadastrar" action="#{bookBean.mensagemCadastro()}" update="mensagem"></p:commandButton>
+
+		</p:panelGrid>
+	</h:form>
+			<h:outputText id="mensagem" value="#{bookBean.mensagemcadastro}"></h:outputText>
+</h:body>
 </html>
