@@ -7,5 +7,13 @@ public class Book {
 	private String nomeautor;
 	private String mensagemcadastro;
 	
+	
+	public String getNomeautor() {
+		return nomeautor;
+	}
+	public void setNomeautor(String nomeautor) {
+		this.nomeautor = nomeautor;
+	}
+	
 
 }

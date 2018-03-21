@@ -12,7 +12,7 @@
 	<h:form>
 		<p:panelGrid columns="2">
 		<h:outputLabel for="nomeautor" value="Autor"></h:outputLabel>
-		<p:inputText id="nomeautor" value="#"></p:inputText>
+		<p:inputText id="nomeautor" value="#{bookBean.book.nomeautor}"></p:inputText>
 		<p:commandButton value="Cadastrar" action="#{bookBean.imprimiConsole()}"></p:commandButton>
 		</p:panelGrid>
 	</h:form>
