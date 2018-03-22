@@ -10,16 +10,35 @@
 </h:head>
 <h:body>
 	<h:form>
+
 		<p:panelGrid columns="2">
-		<h:outputLabel for="nomelivro" value="Nome do Livro"></h:outputLabel>
-		<p:inputText id="nomelivro" value="#{bookBean.book.nomelivro}"></p:inputText>
-		<h:outputLabel for="editora" value="Editora"></h:outputLabel>
-		<p:inputText id="editora" value="#{bookBean.book.editora}"></p:inputText>
-		<h:outputLabel for="nomeautor" value="Autor"></h:outputLabel>
-		<p:inputText id="nomeautor" value="#{bookBean.book.nomeautor}"></p:inputText>
-		<p:commandButton value="Cadastrar" action="#{bookBean.imprimiConsole()}"></p:commandButton>
+			<h:outputLabel for="nomelivro" value="Nome do Livro"></h:outputLabel>
+			<p:inputText id="nomelivro" value="#{bookBean.book.nomelivro}"></p:inputText>
+			<h:outputLabel for="editora" value="Editora"></h:outputLabel>
+			<p:inputText id="editora" value="#{bookBean.book.editora}"></p:inputText>
+			<h:outputLabel for="nomeautor" value="Autor"></h:outputLabel>
+			<p:inputText id="nomeautor" value="#{bookBean.book.nomeautor}"></p:inputText>
+			<p:commandButton value="Cadastrar"
+				action="#{bookBean.salvarlivro(bookBean.book)}"></p:commandButton>
 		</p:panelGrid>
+
 	</h:form>
+	
+	<p:dataTable var="Book" value="#{bookBean.book}">
+
+		<p:column headerText="Nome Livro">
+			<h:outputText value="#{bookBean.book.nomelivro}" />
+		</p:column>
+
+		<p:column headerText="Editora">
+			<h:outputText value="#{bookBean.book.editora}" />
+		</p:column>
+
+		<p:column headerText="Autor">
+			<h:outputText value="#{bookBean.book.nomeautor}" />
+		</p:column>
+	</p:dataTable>
+
 
 </h:body>
 </html>
