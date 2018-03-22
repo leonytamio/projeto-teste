@@ -24,18 +24,18 @@
 
 	</h:form>
 	
-	<p:dataTable var="Book" value="#{bookBean.book}">
+	<p:dataTable var="book" value="#{bookBean.bookList}">
 
 		<p:column headerText="Nome Livro">
-			<h:outputText value="#{bookBean.book.nomelivro}" />
+			<h:outputText value="#{book.nomeautor}" />
 		</p:column>
 
 		<p:column headerText="Editora">
-			<h:outputText value="#{bookBean.book.editora}" />
+			<h:outputText value="#{book.editora}" />
 		</p:column>
 
 		<p:column headerText="Autor">
-			<h:outputText value="#{bookBean.book.nomeautor}" />
+			<h:outputText value="#{book.nomeautor}" />
 		</p:column>
 	</p:dataTable>
 
