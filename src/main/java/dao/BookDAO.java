@@ -17,7 +17,7 @@ public class BookDAO {
 	public void salvar(Book book) {
 
 		String sql = "INSERT INTO \"BOOK\"(\"ID\", \"NAME_BOOK\", \"PUBLISHING_BOOK\", \"AUTHOR_BOOK\") VALUES (NEXTVAL('book_seq'), ?, ?, ?);";
-
+        	
 		try {
 			conexao = ConnectionPostgresSQL.getConnection();
 			pstm = conexao.prepareStatement(sql);
@@ -34,28 +34,55 @@ public class BookDAO {
 	}
 
 	public List<Book> listaAll() {
-		String sql = "SELECT \"ID\", \"NAME_BOOK\", \"PUBLISHING_BOOK\", \"AUTHOR_BOOK\"	FROM public.\"BOOK\";";
+		String sql = "SELECT * FROM \"BOOK\";";
 		
 		List<Book> bookList = new ArrayList<Book>();
+		conexao = null;
+		pstm = null;
+		ResultSet rs = null;
 		
 		try {
 			conexao = ConnectionPostgresSQL.getConnection();
 			pstm = conexao.prepareStatement(sql);
-			ResultSet rs = pstm.executeQuery();
+			rs = pstm.executeQuery();
 			
 			while(rs.next()){
 				Book book = new Book();
-				book.setNomeautor(rs.getString(1));
-				book.setNomelivro(rs.getString(2));
-				book.setEditora(rs.getString(3));
+				book.setNomeautor(rs.getString("AUTHOR_BOOK"));
+				book.setNomelivro(rs.getString("NAME_BOOK"));
+				book.setEditora(rs.getString("PUBLISHING_BOOK"));
 				bookList.add(book);	
 			}
 			
-			conexao.close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+	
+      finally {
 
+         try {
+
+             if (rs != null) {
+
+                 rs.close();
+             }
+
+             if (pstm != null) {
+
+                 pstm.close();
+             }
+
+             if (conexao != null) {
+            	 conexao.close();
+             }
+
+         } catch (Exception e) {
+
+             e.printStackTrace();
+         }
+     }
+		
 			
 		return bookList;
 	}
