@@ -52,17 +52,18 @@ public class BookBean {
 		return bool;
 	}
 
+	public void excluirbook(Book book) {
+		bookdao = new BookDAO();
+		bookdao.excluir(book);
+		this.showList();
+	}
+	
 	public void showList() {
 		bookdao = new BookDAO();
 		bookList = bookdao.listaAll();
 	}
 
-	public void imprimiConsole() {
-		System.out.println(book.getNomelivro());
-		System.out.println(book.getEditora());
-		System.out.println(book.getNomeautor());
-	}
-
+	
 	public Book getBook() {
 		return book;
 	}

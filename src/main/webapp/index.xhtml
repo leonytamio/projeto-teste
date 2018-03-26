@@ -27,9 +27,13 @@
             </p:commandButton>
 		</p:panelGrid>
 
-	</h:form>
+
 	
 	<p:dataTable id = "livro" var="book" value="#{bookBean.bookList}">
+    
+    <p:column headerText="ID Livro">
+			<h:outputText id = "id" value="#{book.id}" />
+		</p:column>
     
 		<p:column headerText="Nome Livro">
 			<h:outputText value="#{book.nomelivro}" />
@@ -42,7 +46,13 @@
 		<p:column headerText="Autor">
 			<h:outputText value="#{book.nomeautor}" />
 		</p:column>
+        
+        <p:column headerText="Ações" style="width:170px;text-align: center">
+        <p:commandButton value="Excluir" action="#{bookBean.excluirbook()}" autoupdate="livro"></p:commandButton>
+        </p:column>
 	</p:dataTable>
+	
+		</h:form>
 
 
 </h:body>

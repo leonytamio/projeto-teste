@@ -1,7 +1,8 @@
 package model;
 
 public class Book {
-
+ 
+	private Integer id;
 	private String nomelivro;
 	private String editora;
 	private String nomeautor;
@@ -28,6 +29,14 @@ public class Book {
 
 	public void setEditora(String editora) {
 		this.editora = editora;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

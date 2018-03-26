@@ -48,6 +48,7 @@ public class BookDAO {
 			
 			while(rs.next()){
 				Book book = new Book();
+				book.setId(rs.getInt("ID"));
 				book.setNomeautor(rs.getString("AUTHOR_BOOK"));
 				book.setNomelivro(rs.getString("NAME_BOOK"));
 				book.setEditora(rs.getString("PUBLISHING_BOOK"));
@@ -85,6 +86,23 @@ public class BookDAO {
 		
 			
 		return bookList;
+	}
+	
+	public void excluir(Book book) {
+
+		String sql = "DELETE FROM \"BOOK\" WHERE \"ID\" = ?;";
+        	
+		try {
+			conexao = ConnectionPostgresSQL.getConnection();
+			pstm = conexao.prepareStatement(sql);
+			System.out.println(pstm);			
+			pstm.setInt(1, book.getId());
+			pstm.execute();
+			conexao.close();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 }
