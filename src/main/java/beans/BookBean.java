@@ -5,15 +5,18 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import dao.BookDAO;
-import model.Book;
+import entity.Book;
 
+@ViewScoped
 @ManagedBean
+
 public class BookBean {
 
-	Book book = new Book();
+	private Book book = new Book();
 	BookDAO bookdao;
 	List<Book> bookList = new ArrayList<Book>();
 
@@ -36,16 +39,20 @@ public class BookBean {
 		
 		boolean bool = true;
 		
-		if(book.getNomeautor().isEmpty() || book.getNomeautor() == null) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo nome do autor esta vazio" , null ));
-			 bool = false;
-		}
 		if(book.getEditora().isEmpty() || book.getEditora() == null) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo Editora esta vazio" , null ));
 			bool = false;
 		}
 		if(book.getNomelivro().isEmpty() || book.getNomelivro() == null) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo nome do livro esta vazio" , null ));
+			bool = false;
+		}
+		if(book.getNomeautor().isEmpty() || book.getNomeautor() == null) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo nome do autor esta vazio" , null ));
+			bool = false;
+		}
+		if(book.getAnopublic() == null) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo nome do autor esta vazio" , null ));
 			bool = false;
 		}
 		
@@ -62,7 +69,6 @@ public class BookBean {
 		bookdao = new BookDAO();
 		bookList = bookdao.listaAll();
 	}
-
 	
 	public Book getBook() {
 		return book;
