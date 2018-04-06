@@ -7,6 +7,15 @@ public class Book {
 	private String editora;
 	private String nomeautor;
 	private Integer anopublic;
+	private String genero;
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
 
 	public Integer getAnopublic() {
 		return anopublic;

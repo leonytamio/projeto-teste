@@ -16,7 +16,7 @@ public class BookDAO {
 
 	public void salvar(Book book) {
 
-		String sql = "INSERT INTO \"BOOK\"(\"ID\", \"NAME_BOOK\", \"PUBLISHING_BOOK\", \"AUTHOR_BOOK\", \"YEAR_PUBLIC\") VALUES (NEXTVAL('book_seq'), ?, ?, ?, ?);";
+		String sql = "INSERT INTO \"BOOK\"(\"ID\", \"NAME_BOOK\", \"PUBLISHING_BOOK\", \"AUTHOR_BOOK\", \"YEAR_PUBLIC\", \"GENRE_BOOK\") VALUES (NEXTVAL('book_seq'), ?, ?, ?, ?, ?);";
         	
 		try {
 			conexao = ConnectionPostgresSQL.getConnection();
@@ -25,6 +25,7 @@ public class BookDAO {
 			pstm.setString(2, book.getEditora());
 			pstm.setString(3, book.getNomeautor());
 			pstm.setInt(4, book.getAnopublic());
+			pstm.setString(5, book.getGenero());
 			pstm.execute();
 			conexao.close();
 
@@ -54,6 +55,7 @@ public class BookDAO {
 				book.setNomelivro(rs.getString("NAME_BOOK"));
 				book.setEditora(rs.getString("PUBLISHING_BOOK"));
 				book.setAnopublic(rs.getInt("YEAR_PUBLIC"));
+				book.setGenero(rs.getString("GENRE_BOOK"));
 				bookList.add(book);	
 			}
 			

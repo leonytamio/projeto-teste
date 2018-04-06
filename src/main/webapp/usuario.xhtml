@@ -19,8 +19,7 @@
 			<p:inputMask mask="999999999" value="#{userBean.user.tel}"></p:inputMask>
 			<p:commandButton value="Cadastrar"
 				action="#{userBean.salvarusuario(userBean.user)}" update="user"></p:commandButton>
-			<p:commandButton value="Visualizar" action="#{userBean.showList()}"
-				update="user"></p:commandButton>
+			<p:commandButton value="Visualizar" action="#{userBean.showList()}" update="user" immediate="true"></p:commandButton>
 		</p:panelGrid>
 
 		<p:dataTable id="user" var="user" value="#{userBean.userList}">
