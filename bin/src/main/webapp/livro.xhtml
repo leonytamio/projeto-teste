@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	template="template.xhtml">
+
+	<h:form>
+		<p:panelGrid columns="2">
+			<h:outputLabel value="Nome do Livro:"></h:outputLabel>
+			<p:inputText id="nomeLivro" value="#{bookBean.book.nomelivro}"
+				required="true" />
+			<h:outputLabel for="editora" value="Editora:"></h:outputLabel>
+			<p:inputText id="editora" value="#{bookBean.book.editora}"
+				required="true" />
+			<h:outputLabel for="nomeautor" value="Autor:"></h:outputLabel>
+			<p:inputText id="nomeautor" value="#{bookBean.book.nomeautor}"
+				required="true" />
+			<h:outputLabel for="anopublic" value="Ano de Publicação:"></h:outputLabel>
+			<p:inputMask id="anopublic" mask="9999"
+				value="#{bookBean.book.anopublic}" required="true" />
+			<h:outputLabel for="genero" value="Gênero:"></h:outputLabel>
+			<h:selectOneMenu id="genero" value="#{bookBean.book.genero}"
+				required="true">
+				<f:selectItem itemLabel="Selecione" itemValue=" "
+					noSelectionOption="true" />
+				<f:selectItem itemLabel="Fantasia" itemValue="Fantasia" />
+				<f:selectItem itemLabel="Romance" itemValue="Romance" />
+				<f:selectItem itemLabel="Infantil" itemValue="Infantil" />
+				<f:selectItem itemLabel="Poesia" itemValue="Poesia" />
+				<f:selectItem itemLabel="Política" itemValue="Política" />
+				<f:selectItem itemLabel="Crônicas" itemValue="Crônicas" />
+			</h:selectOneMenu>
+			<p:commandButton value="Cadastrar"
+				actionListener="#{bookBean.salvarlivro(bookBean.book)}"
+				update="livro" process="@form">
+			</p:commandButton>
+			<p:commandButton value="Visualizar"
+				actionListener="#{bookBean.showList()}" update="livro"
+				immediate="true">
+			</p:commandButton>
+		</p:panelGrid>	
+		<p:dataTable id="livro" var="book" value="#{bookBean.bookList}">
+			<p:column headerText="Nome Livro" sortBy="#{book.nomelivro}">
+				<h:outputText value="#{book.nomelivro}" />
+			</p:column>
+			<p:column headerText="Editora" sortBy="#{book.editora}">
+				<h:outputText value="#{book.editora}" />
+			</p:column>
+			<p:column headerText="Autor" sortBy="#{book.nomeautor}">
+				<h:outputText value="#{book.nomeautor}" />
+			</p:column>
+			<p:column headerText="Gênero" sortBy="#{book.genero}">
+				<h:outputText value="#{book.genero}" />
+			</p:column>
+			<p:column headerText="Ano de Publicação" sortBy="#{book.anopublic}">
+				<h:outputText value="#{book.anopublic}" />
+			</p:column>
+			<p:column headerText="Ações" style="width:170px;text-align: center">
+				<p:commandButton value="Excluir"
+					action="#{bookBean.excluirbook(book)}" update="livro"></p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+</ui:decorate>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>YourBook</title>
+</h:head>
+<h:body>
+	<h1>Biblioteca</h1>
+	<p:toolbar>
+
+		<f:facet name="left">
+			<h:form>
+
+				<p:growl id="messages" showDetail="true" />
+
+				<p:menuButton value="Empréstimos">
+					<p:menuitem value=" Criar Emprestimo" url="criaremprestimo.xhtml"></p:menuitem>
+					<p:menuitem value=" Empréstimos" url="visualizaremprestimo.xhtml"></p:menuitem>
+					<p:separator />
+				</p:menuButton>
+				<p:spacer />
+				<p:menuButton value="Livros">
+					<p:menuitem value=" Cadastrar Livro" url="cadastrolivro.xhtml"></p:menuitem>
+					<p:menuitem value=" Visualizar" url="visualizarlivro.xhtml"></p:menuitem>
+					<p:separator />
+				</p:menuButton>
+				<p:spacer />
+				<p:menuButton value="Usuários">
+					<p:menuitem value=" Cadastro" url="cadastrousuario.xhtml"></p:menuitem>
+					<p:menuitem value=" Visualziar" url="visualizarusuario.xhtml"></p:menuitem>
+					<p:separator />
+				</p:menuButton>
+			</h:form>
+		</f:facet>
+	</p:toolbar>
+
+	<!-- 	<p:menubar> -->
+	<!-- 		<p:menuitem value=" Inicio" url="index.xhtml"></p:menuitem> -->
+	<!-- 		<p:menuitem value=" Empréstimos" url="emprestimo.xhtml"></p:menuitem> -->
+	<!-- 		<p:menuitem value=" Usuários" url="usuario.xhtml"></p:menuitem> -->
+	<!-- 		<p:menuitem value=" Livros" url="pages/livro.xhtml"></p:menuitem> -->
+	<!-- 	</p:menubar> -->
+
+
+	<ui:insert></ui:insert>
+</h:body>
+</html>

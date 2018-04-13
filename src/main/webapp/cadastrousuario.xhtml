@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
+	<p:spacer>
+	</p:spacer>
+	<h:form>
+		<p:growl id="growl" showDetail="false" sticky="true" />
+		<p:panelGrid columns="2">
+			<h:outputLabel id="nomeuser" value="Nome"></h:outputLabel>
+			<p:inputText value="#{userBean.user.nome}" required="true"
+				requiredMessage="Campo Sobrenome em Branco!"></p:inputText>
+			<h:outputLabel id="sobrenomeuser" for="sobrenome" value="Sobrenome"></h:outputLabel>
+			<p:inputText value="#{userBean.user.sobrenome}" required="true" requiredMessage="Campo Sobrenome em Branco!"></p:inputText>
+			<h:outputLabel id="enderecouser" for="endereco" value="Endereço"
+				></h:outputLabel>
+			<p:inputText value="#{userBean.user.endereco}" required="true" requiredMessage="Campo Endereço em Branco!"></p:inputText>
+			<h:outputLabel id="teluser" for="tel" value="Telefone"
+				></h:outputLabel>
+			<p:inputMask mask="999999999" value="#{userBean.user.tel}" required="true" requiredMessage="Campo Telefone em Branco!"></p:inputMask>
+			<p:commandButton value="Cadastrar"
+				actionListener="#{userBean.salvarusuario(userBean.user)}"
+				update="@form"></p:commandButton>
+		</p:panelGrid>
+	</h:form>
+
+</ui:decorate>

@@ -1,6 +1,5 @@
 package beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -18,56 +17,20 @@ public class BookBean {
 
 	private Book book = new Book();
 	BookDAO bookdao;
-	List<Book> bookList = new ArrayList<Book>();
+	List<Book> bookList = new BookDAO().listaAll();
 
 	public BookBean() {
 		// this.showList();
 	}
 
-	public void salvarlivro(Book book) {
-
-//			return;
-//		}
-//if (!isVazio(book)) {
-//		
+	public void salvarlivro(Book book) {		
 		bookdao = new BookDAO();
 		bookdao.salvar(book);
 		this.showList();
-	}
-
-	public boolean isVazio(Book book) {
-
-		boolean bool = true;
-
-		if (book.getEditora().isEmpty() || book.getEditora() == null) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo Editora esta vazio", null));
-			bool = false;
-		}
-		if (book.getNomelivro().isEmpty() || book.getNomelivro() == null) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo nome do livro esta vazio", null));
-			bool = false;
-		}
-		if (book.getNomeautor().isEmpty() || book.getNomeautor() == null) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo nome do autor esta vazio", null));
-			bool = false;
-		}
-		if (book.getAnopublic() == null) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo nome do autor esta vazio", null));
-			bool = false;
-		}
-
-		if (book.getGenero() == null) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo gênero esta vazio", null));
-			bool = false;
-		}
-
-		return bool;
-	}
+		this.book = new Book();
+		FacesContext context = FacesContext.getCurrentInstance();        
+        context.addMessage(null, new FacesMessage("Successful: Cadastro realizado com sucesso!"));
+	}	
 
 	public void excluirbook(Book book) {
 		bookdao = new BookDAO();
@@ -78,6 +41,10 @@ public class BookBean {
 	public void showList() {
 		bookdao = new BookDAO();
 		bookList = bookdao.listaAll();
+	}
+	
+	public List<Book> bookList(){
+		return new BookDAO().listaAll();
 	}
 
 	public Book getBook() {

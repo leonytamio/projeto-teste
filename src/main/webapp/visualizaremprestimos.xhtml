@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
+	<p:spacer>
+	</p:spacer>
+	<h:form>
+		<p:spacer>
+		</p:spacer>
+		<p:dataTable id="Emprestimos" var="emprestimo" value="#{loanBean.loanList}">
+		<p:column headerText="ID" sortBy="#{emprestimo.id}"><h:outputText value="#{emprestimo.id}" /></p:column>
+		    <p:column headerText="Usuário" sortBy="#{emprestimo.id_user}"><h:outputText value="#{emprestimo.id_user}" /></p:column>
+			<p:column headerText="Livros" sortBy="#{emprestimo.id_book}"><h:outputText value="#{emprestimo.id_book}" /></p:column>
+			<p:column headerText="Dias de Emprestimo" sortBy="#{emprestimo.loan_days}"><h:outputText value="#{emprestimo.loan_days}" /></p:column>
+			<p:column headerText="Ações" style="width:170px;text-align: center"><p:commandButton value="Excluir" action="#{loanBean.excluirloan(loan)}" update="Emprestimos"></p:commandButton></p:column>
+		</p:dataTable>
+	</h:form>
+
+</ui:decorate>

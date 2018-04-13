@@ -4,19 +4,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>YourBook</title>
 </h:head>
 <h:body>
-	<h1>Biblioteca</h1>
+    <h:graphicImage library="imgs" name="images.jpg" width="150px"/>
+	<p:toolbar>
 
-	<p:menubar>
-		<p:menuitem value=" Inicio" url="index.xhtml"></p:menuitem>
-		<p:menuitem value=" Empréstimos" url="emprestimo.xhtml"></p:menuitem>
-		<p:menuitem value=" Usuários" url="usuario.xhtml"></p:menuitem>
-		<p:menuitem value=" Livros" url="livro.xhtml"></p:menuitem>
-	</p:menubar>
+		<f:facet name="left">
+		
+			<h:form>	
+				<p:menuButton value="Empréstimos">
+					<p:menuitem value=" Criar Emprestimo" url="criaremprestimo.xhtml"></p:menuitem>
+					<p:menuitem value=" Empréstimos" url="visualizaremprestimos.xhtml"></p:menuitem>
+					<p:separator />
+				</p:menuButton>
+				<p:spacer />
+				<p:menuButton value="Livros">
+					<p:menuitem value=" Cadastrar Livro" url="cadastrolivro.xhtml"></p:menuitem>
+					<p:menuitem value=" Visualizar" url="visualizarlivro.xhtml"></p:menuitem>
+					<p:separator />
+				</p:menuButton>
+				<p:spacer />
+				<p:menuButton value="Usuários">
+					<p:menuitem value=" Cadastro" url="cadastrousuario.xhtml"></p:menuitem>
+					<p:menuitem value=" Visualziar" url="visualizarusuario.xhtml"></p:menuitem>
+					<p:separator />
+				</p:menuButton>
+			</h:form>
+		</f:facet>
+	</p:toolbar>
+
+	<!-- 	<p:menubar> -->
+	<!-- 		<p:menuitem value=" Inicio" url="index.xhtml"></p:menuitem> -->
+	<!-- 		<p:menuitem value=" Empréstimos" url="emprestimo.xhtml"></p:menuitem> -->
+	<!-- 		<p:menuitem value=" Usuários" url="usuario.xhtml"></p:menuitem> -->
+	<!-- 		<p:menuitem value=" Livros" url="pages/livro.xhtml"></p:menuitem> -->
+	<!-- 	</p:menubar> -->
 
 
 	<ui:insert></ui:insert>

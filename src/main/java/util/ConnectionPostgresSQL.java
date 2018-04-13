@@ -18,7 +18,7 @@ public class ConnectionPostgresSQL {
 			Class.forName("org.postgresql.Driver");
 
 			try {
-				con = DriverManager.getConnection(url, "postgres", "timao");
+				con = DriverManager.getConnection(url, "postgres", "107562");
 
 				// assuming your SQL Server's username is "username"
 				// and password is "password"

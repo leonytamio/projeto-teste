@@ -92,6 +92,31 @@ public class BookDAO {
 		return bookList;
 	}
 	
+	
+	public void editar(Book book) {
+		ResultSet rs = null;
+		String sql = "UPDATE public.\"BOOK\"\n" + 
+				"	SET \"NAME_BOOK\"=?, \"PUBLISHING_BOOK\"=?, \"AUTHOR_BOOK\"=?, \"YEAR_PUBLIC\"=?, \"GENRE_BOOK\"=?\n" + 
+				"	WHERE \"ID\"=?;";
+		
+				try {
+			conexao = ConnectionPostgresSQL.getConnection();
+			pstm = conexao.prepareStatement(sql);
+			rs = pstm.executeQuery();
+			book.setId(rs.getInt("ID"));
+			book.setNomeautor(rs.getString("AUTHOR_BOOK"));
+			book.setNomelivro(rs.getString("NAME_BOOK"));
+			book.setEditora(rs.getString("PUBLISHING_BOOK"));
+			book.setAnopublic(rs.getInt("YEAR_PUBLIC"));
+			book.setGenero(rs.getString("GENRE_BOOK"));		
+			pstm.execute();
+			conexao.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	
 	public void excluir(Book book) {
 
 		String sql = "DELETE FROM \"BOOK\" WHERE \"ID\" = ?;";

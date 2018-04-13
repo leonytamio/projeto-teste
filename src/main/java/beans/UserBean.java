@@ -1,6 +1,5 @@
 package beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -19,46 +18,37 @@ public class UserBean {
 
 	private User user = new User();
 	UserDAO userdao;
-	List<User> userList = new ArrayList<User>();
+	List<User> userList = new UserDAO().listaAll();
+
+	
+	private List<User> usersList = new UserDAO().listaAll();
 
 	public UserBean() {
 		// this.showList();
 	}
 
+	public List<User> getUsersList() {
+		return usersList;
+	}
+
+	public void setUsersList(List<User> usersList) {
+		this.usersList = usersList;
+	}
+
 	public void salvarusuario(User user) {
 
-		if(!isVazio(user)) {
-			return;
-		}
+		
 			
 		userdao = new UserDAO();
 		userdao.salvar(user);
 		this.showList();
+		this.user = new User();
+		FacesContext context = FacesContext.getCurrentInstance();        
+        context.addMessage(null, new FacesMessage("Successful: Cadastro realizado com sucesso!"));
 	}
 	
-	public boolean isVazio(User user) {
-		
-		boolean bool = true;
-		
-		if(user.getNome().isEmpty() || user.getNome() == null) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo nome esta vazio" , null ));
-			bool = false;
-		}
-		if(user.getSobrenome().isEmpty() || user.getSobrenome() == null) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo Sobrenome esta vazio" , null ));
-			bool = false;
-		}
-		if(user.getEndereco().isEmpty() || user.getEndereco() == null) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo Endereço esta vazio" , null ));
-			bool = false;
-		}
-		if(user.getTel() == null) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Campo Telefone esta vazio" , null ));
-			bool = false;
-		}
-		
-		return bool;
-	}
+	
+	
 
 	public void excluiruser(User user) {
 		userdao = new UserDAO();
@@ -69,6 +59,11 @@ public class UserBean {
 	public void showList() {
 		userdao = new UserDAO();
 		userList = userdao.listaAll();
+		System.out.println(user.getSobrenome());
+	}
+	
+	public List<User> userList(){
+		return new UserDAO().listaAll();		
 	}
 	
 	public User getUser() {

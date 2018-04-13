@@ -8,10 +8,37 @@
 	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
 
 	<h:form>
-		<p:panelGrid columns="2">
-			<h:outputLabel value="Nome"></h:outputLabel>
-		</p:panelGrid>
-
+	<p:spacer/>	
+		
+		<p:spacer/>
+						
+		 <p:commandButton value="Requerimento" id="requerimento" actionListener="#{buttonView.buttonAction}" styleClass="ui-priority-primary"><p:spacer/></p:commandButton>
+		 <p:commandButton value="Visualziar" id="visualizar" actionListener="#{buttonView.buttaonAction}" styleClass="ui-priority-primary"><p:spacer/></p:commandButton>
+		 
+ 		<p:spacer/>	
+ 		
+		<p:dataTable id="livro" var="book" value="#{bookBean.bookList}">
+			<p:column headerText="Nome Livro" sortBy="#{book.nomelivro}">
+				<h:outputText value="#{book.nomelivro}" />
+			</p:column>
+			<p:column headerText="Editora" sortBy="#{book.editora}">
+				<h:outputText value="#{book.editora}" />
+			</p:column>
+			<p:column headerText="Autor" sortBy="#{book.nomeautor}">
+				<h:outputText value="#{book.nomeautor}" />
+			</p:column>
+			<p:column headerText="Gênero" sortBy="#{book.genero}">
+				<h:outputText value="#{book.genero}" />
+			</p:column>
+			<p:column headerText="Ano de Publicação" sortBy="#{book.anopublic}">
+				<h:outputText value="#{book.anopublic}" />
+			</p:column>
+			<p:column headerText="Ações" style="width:170px;text-align: center">
+				<p:commandButton value="Excluir"
+					action="#{bookBean.excluirbook(book)}" update="livro"></p:commandButton>
+			</p:column>
+		</p:dataTable>
+		
 	</h:form>
 
 </ui:decorate>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
+<p:spacer> </p:spacer>
+	<h:form>
+		<p:panelGrid columns="2">
+			<h:outputLabel value="Nome"></h:outputLabel>
+			<p:inputText value="#{userBean.user.nome}"></p:inputText>
+			<h:outputLabel for="sobrenome" value="Sobrenome"></h:outputLabel>
+			<p:inputText value="#{userBean.user.sobrenome}"></p:inputText>
+			<h:outputLabel for="endereco" value="Endereço"></h:outputLabel>
+			<p:inputText value="#{userBean.user.endereco}"></p:inputText>
+			<h:outputLabel for="tel" value="Telefone"></h:outputLabel>
+			<p:inputMask mask="999999999" value="#{userBean.user.tel}"></p:inputMask>	
+		</p:panelGrid>	
+		
+		<p:spacer> </p:spacer>	
+			<p:commandButton value="Cadastrar" action="#{userBean.salvarusuario(userBean.user)}" ></p:commandButton>
+	</h:form>	
+
+</ui:decorate>

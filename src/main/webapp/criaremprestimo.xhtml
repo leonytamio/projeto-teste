@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
+
+	<h:form>
+		<p:spacer />
+		<p:panelGrid columns="2">
+			<p:outputLabel>Usuário:  </p:outputLabel>
+			<p:selectOneMenu value="#{loanBean.loan.id_user}" style="width:150px">
+				<f:selectItems var="userDROP" value="#{userBean.userList}"	itemLabel="#{userDROP.nome}" itemValue="#{userDROP.id}" />
+			</p:selectOneMenu>
+			<p:outputLabel>Livro:  </p:outputLabel>
+			<p:selectOneMenu  value="#{loanBean.loan.id_book}"	style="width:150px">
+				<f:selectItems var="bookDROP" value="#{bookBean.bookList}"	itemLabel="#{bookDROP.nomelivro}"	itemValue="#{bookDROP.id}" />
+			</p:selectOneMenu>
+			<h:outputLabel value="Dias Empréstimos:"></h:outputLabel>
+			<p:inputText value="#{loanBean.loan.loan_days}"></p:inputText>
+			<p:commandButton actionListener="#{loanBean.cadastrarEmprestimo}" value="Efetuar Empréstimo" immediate="true"></p:commandButton>
+		</p:panelGrid>
+	</h:form>
+
+</ui:decorate>
